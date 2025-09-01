@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Niyantri Cafe - Menu</title>
+  <meta name="description" content="Menu at Niyantri Cafe, Hyderabad. Explore our coffee beverages and light bites." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .page { opacity: 0; animation: fadeIn 0.8s ease forwards; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .reveal.in-view { opacity: 1; transform: none; }
+  </style>
+</head>
+<body class="bg-rose-50 text-stone-900 page">
+  <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-coffee-500 text-white shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-label="Coffee cup"><path d="M3 6h12a5 5 0 0 1 0 10H3a3 3 0 0 1 0-6h2V6zm0 0H6v4h9c1.654 0 3-1.346 3-3s-1.346-3-3-3H3z"/></svg>
+          </span>
+          <a href="./index.html" class="text-2xl font-semibold tracking-tight">Niyantri Cafe</a>
+        </div>
+        <nav class="hidden md:flex space-x-6 font-medium">
+          <a href="./index.html" class="hover:text-coffee-700">Home</a>
+          <a href="./menu.html" class="hover:text-coffee-700">Menu</a>
+          <a href="./cart.html" class="hover:text-coffee-700">Cart (<span id="cart-count">0</span>)</a>
+          <a href="./about.html" class="hover:text-coffee-700">About</a>
+          <a href="./contact.html" class="hover:text-coffee-700">Contact</a>
+        </nav>
+        <button id="mobile-menu-toggle" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-coffee-700 hover:bg-coffee-100 focus:outline-none" aria-label="Open menu">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white/90">
+      <a href="./index.html" class="block px-4 py-2">Home</a>
+      <a href="./menu.html" class="block px-4 py-2">Menu</a>
+      <a href="./cart.html" class="block px-4 py-2">Cart (<span id="cart-count-mobile">0</span>)</a>
+      <a href="./about.html" class="block px-4 py-2">About</a>
+      <a href="./contact.html" class="block px-4 py-2">Contact</a>
+    </div>
+  </header>
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-semibold mb-6" style="font-family: 'Playfair Display', serif;">Our Menu</h1>
+      <p class="mb-8 text-sm text-coffee-700">All items are served with care in a warm coffee palette. Prices are shown in USD for the sandbox demo.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Espresso -->
+        <div class="bg-white/70 rounded-xl shadow-md p-4 reveal">
+          <img src="https://images.unsplash.com/photo-1605468596782-502ce2012ef0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHwxfHxBJTIwc21hbGwlMjBjdXAlMjBvZiUyMGVzcHJlc3NvJTIwb24lMjBhJTIwc2F1Y2VyfGVufDB8MHx8fDE3NTY3NDM1OTV8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Espresso cup" class="w-full h-40 object-cover rounded-md" />
+          <div class="mt-3 flex justify-between items-center">
+            <div>
+              <h3 class="font-semibold">Espresso</h3>
+              <p class="text-sm text-coffee-700">Rich and bold, 1 shot. 0.75 oz.</p>
+            </div>
+            <div class="text-right">
+              <div class="text-lg font-semibold">$2.50</div>
+              <button onclick="addToCart('espresso', 'Espresso', 2.50)" class="mt-2 px-3 py-2 rounded-lg bg-coffee-700 text-white hover:bg-coffee-800">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <!-- Cappuccino -->
+        <div class="bg-white/70 rounded-xl shadow-md p-4 reveal">
+          <img src="https://pixabay.com/get/g7b521bdfa7b4ba8416ad47b928f87f680abf49e048c0ea426191cdadd9c9f5f5dc863a7d3714f3e6b0f1c60a323acf814e321271b36e891fc9d9988198df1a8e_640.jpg" alt="Cappuccino" class="w-full h-40 object-cover rounded-md" />
+          <div class="mt-3 flex justify-between items-center">
+            <div>
+              <h3 class="font-semibold">Cappuccino</h3>
+              <p class="text-sm text-coffee-700">Equal parts espresso, steamed milk, and foam.</p>
+            </div>
+            <div class="text-right">
+              <div class="text-lg font-semibold">$3.50</div>
+              <button onclick="addToCart('cappuccino', 'Cappuccino', 3.5)" class="mt-2 px-3 py-2 rounded-lg bg-coffee-700 text-white hover:bg-coffee-800">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <!-- Latte -->
+        <div class="bg-white/70 rounded-xl shadow-md p-4 reveal">
+          <img src="https://images.pexels.com/photos/3310817/pexels-photo-3310817.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Latte" class="w-full h-40 object-cover rounded-md" />
+          <div class="mt-3 flex justify-between items-center">
+            <div>
+              <h3 class="font-semibold">Latte</h3>
+              <p class="text-sm text-coffee-700">Creamy milk and smooth espresso.</p>
+            </div>
+            <div class="text-right">
+              <div class="text-lg font-semibold">$3.75</div>
+              <button onclick="addToCart('latte', 'Latte', 3.75)" class="mt-2 px-3 py-2 rounded-lg bg-coffee-700 text-white hover:bg-coffee-800">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <!-- Americano -->
+        <div class="bg-white/70 rounded-xl shadow-md p-4 reveal">
+          <img src="https://images.pexels.com/photos/6933132/pexels-photo-6933132.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Americano" class="w-full h-40 object-cover rounded-md" />
+          <div class="mt-3 flex justify-between items-center">
+            <div>
+              <h3 class="font-semibold">Americano</h3>
+              <p class="text-sm text-coffee-700">Espresso diluted with hot water.</p>
+            </div>
+            <div class="text-right">
+              <div class="text-lg font-semibold">$2.80</div>
+              <button onclick="addToCart('americano', 'Americano', 2.8)" class="mt-2 px-3 py-2 rounded-lg bg-coffee-700 text-white hover:bg-coffee-800">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <!-- Mocha -->
+        <div class="bg-white/70 rounded-xl shadow-md p-4 reveal">
+          <img src="https://pixabay.com/get/g19fcf498f15d3688dc0462a1fe673c3ff6178e49b50004c994022fcce5370140592e8ca285340e39676011d21d3e434bf58250992a87dd25300edac497826c64_640.jpg" alt="Mocha" class="w-full h-40 object-cover rounded-md" />
+          <div class="mt-3 flex justify-between items-center">
+            <div>
+              <h3 class="font-semibold">Mocha</h3>
+              <p class="text-sm text-coffee-700">Espresso with chocolate and steamed milk.</p>
+            </div>
+            <div class="text-right">
+              <div class="text-lg font-semibold">$4.00</div>
+              <button onclick="addToCart('mocha', 'Mocha', 4.0)" class="mt-2 px-3 py-2 rounded-lg bg-coffee-700 text-white hover:bg-coffee-800">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <!-- Cold Brew -->
+        <div class="bg-white/70 rounded-xl shadow-md p-4 reveal">
+          <img src="https://pixabay.com/get/g863f23ff972dfa564d7735479e53738e7c7c3dd65cd5c436da9ba0f459ca471fa079b3ea65aeb84dfe470fa58d7e3f0ca55005dd1c8885b795c943399420d2d3_640.jpg" alt="Cold Brew" class="w-full h-40 object-cover rounded-md" />
+          <div class="mt-3 flex justify-between items-center">
+            <div>
+              <h3 class="font-semibold">Cold Brew</h3>
+              <p class="text-sm text-coffee-700">Smooth, chilled coffee concentrate.</p>
+            </div>
+            <div class="text-right">
+              <div class="text-lg font-semibold">$3.00</div>
+              <button onclick="addToCart('coldbrew', 'Cold Brew', 3.0)" class="mt-2 px-3 py-2 rounded-lg bg-coffee-700 text-white hover:bg-coffee-800">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-white/80 text-center py-6 mt-12">
+    <p class="text-sm text-coffee-700">&copy; 2025 Niyantri Cafe, Hyderabad, India</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-toggle')?.addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      if (menu.classList.contains('hidden')) menu.classList.remove('hidden'); else menu.classList.add('hidden');
+    });
+
+    // Animate menu items on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => obs.observe(r));
+  </script>
+
+  <script>
+    // Shared cart helpers
+    function getCart(){ return JSON.parse(localStorage.getItem('shoppingCart')) || []; }
+    function saveCart(cart){ localStorage.setItem('shoppingCart', JSON.stringify(cart)); updateCartCount(); }
+    function addToCart(id, name, price){ const cart = getCart(); const item = cart.find(i => i.id === id); if(item) item.quantity++; else cart.push({id, name, price, quantity:1}); saveCart(cart); alert(name + ' added to cart.'); }
+    function updateCartCount(){ const cart = getCart(); const total = cart.reduce((s,i)=> s+i.quantity,0); const el = document.getElementById('cart-count'); if(el) el.textContent = total; }
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', updateCartCount);
+  </script>
+</body>
+</html>
