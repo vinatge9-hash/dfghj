@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Niyantri Cafe - About</title>
+  <meta name="description" content="Learn about Niyantri Cafe, our story, and our passion for craft coffee in Hyderabad." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .page { opacity: 0; animation: fadeIn 0.8s ease forwards; }
+    @keyframes fadeIn { to { opacity: 1; } }
+  </style>
+</head>
+<body class="bg-rose-50 text-stone-900 page">
+  <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-coffee-500 text-white shadow-md"></span>
+          <a href="./index.html" class="text-2xl font-semibold">Niyantri Cafe</a>
+        </div>
+        <nav class="hidden md:flex space-x-6 font-medium">
+          <a href="./index.html" class="hover:text-coffee-700">Home</a>
+          <a href="./menu.html" class="hover:text-coffee-700">Menu</a>
+          <a href="./cart.html" class="hover:text-coffee-700">Cart</a>
+          <a href="./about.html" class="hover:text-coffee-700">About</a>
+          <a href="./contact.html" class="hover:text-coffee-700">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div class="space-y-4 reveal">
+        <h2 class="text-2xl font-semibold" style="font-family: 'Playfair Display', serif;">Our Story</h2>
+        <p>Founded with a love for thoughtful coffee, Niyantri Cafe blends humble ingredients with meticulous technique to deliver a comforting, yet refined, cafe experience in Hyderabad.</p>
+        <p>We source beans from trusted roasters, craft each cup with care, and design spaces that feel like a warm, wooden-hued embrace.</p>
+      </div>
+      <div class="reveal">
+        <img src="https://images.pexels.com/photos/3901958/pexels-photo-3901958.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Cozy cafe interior" class="w-full h-80 object-cover rounded-xl shadow" />
+      </div>
+    </div>
+  </section>
+  <section class="py-8"></section>
+  <footer class="bg-white/80 text-center py-6">
+    <p class="text-sm text-coffee-700">&copy; 2025 Niyantri Cafe, Hyderabad, India</p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reveals = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+      }, { threshold: 0.1 });
+      reveals.forEach(r => obs.observe(r));
+    });
+  </script>
+</body>
+</html>
