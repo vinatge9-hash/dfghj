@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Niyantri Cafe - Home</title>
+  <meta name="description" content="Niyantri Cafe - a warm, coffee-colored cafe experience in Hyderabad with delicious brews and cozy ambiance." />
+  <!-- Fonts (two-step advanced font usage) -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            coffee: {
+              50: '#f5efe7',
+              100: '#e8dbcb',
+              200: '#d3b89a',
+              300: '#a97b54',
+              400: '#8b5f3f',
+              500: '#6f4e37',
+              600: '#5a4030',
+              700: '#4b342a',
+              800: '#3a2a24',
+              900: '#251f1b'
+            },
+            cream: '#f8f0e5'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Swiper (image carousel) -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <!-- PayPal SDK (Sandbox) for checkout (will be used on checkout page) -->
+  <!-- Note: The checkout page will load the PayPal SDK separately when needed -->
+  <style>
+    /* Gentle page fade-in on load */
+    .page { opacity: 0; animation: fadeIn 0.8s ease forwards; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in-view { opacity: 1; transform: none; }
+  </style>
+</head>
+<body class="bg-rose-50 text-stone-900 page">
+  <!-- Header / Navbar -->
+  <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <!-- Logo (inline SVG coffee cup) -->
+          <span class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-coffee-500 text-white shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="currentColor" aria-label="Coffee cup"><path d="M3 6h12a5 5 0 0 1 0 10H3a3 3 0 0 1 0-6h2V6zm0 0H6v4h9c1.654 0 3-1.346 3-3s-1.346-3-3-3H3z"/></svg>
+          </span>
+          <a href="./index.html" class="text-2xl font-semibold tracking-tight">Niyantri Cafe</a>
+        </div>
+        <nav class="hidden md:flex space-x-6 font-medium">
+          <a href="./index.html" class="hover:text-coffee-700">Home</a>
+          <a href="./menu.html" class="hover:text-coffee-700">Menu</a>
+          <a href="./cart.html" class="flex items-center hover:text-coffee-700">Cart (<span id="cart-count">0</span>)</a>
+          <a href="./about.html" class="hover:text-coffee-700">About</a>
+          <a href="./contact.html" class="hover:text-coffee-700">Contact</a>
+        </nav>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-toggle" class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-coffee-700 hover:bg-coffee-100 focus:outline-none" aria-label="Open menu">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/90">
+      <a href="./index.html" class="block px-4 py-2">Home</a>
+      <a href="./menu.html" class="block px-4 py-2">Menu</a>
+      <a href="./cart.html" class="block px-4 py-2">Cart (<span id="cart-count-mobile">0</span>)</a>
+      <a href="./about.html" class="block px-4 py-2">About</a>
+      <a href="./contact.html" class="block px-4 py-2">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative bg-gradient-to-br from-cream to-rose-100 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 items-center gap-8">
+      <div class="space-y-5">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight" style="font-family: 'Playfair Display', serif;">Welcome to Niyantri Cafe</h1>
+        <p class="text-lg md:text-xl text-coffee-700">A cozy coffee haven in Hyderabad. Sip thoughtfully crafted brews, hear soft music, and savor moments of calm in a warm, cocoa-toned setting.</p>
+        <div class="flex space-x-4">
+          <a href="./menu.html" class="inline-flex items-center px-5 py-3 rounded-lg bg-coffee-700 text-white hover:bg-coffee-800 transition">View Menu</a>
+          <a href="./cart.html" class="inline-flex items-center px-5 py-3 rounded-lg bg-white border border-coffee-700 text-coffee-700 hover:bg-coffee-50 transition">View Cart</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="rounded-2xl bg-white/60 backdrop-blur-sm shadow-xl p-6 md:p-8">
+          <div class="swiper-container" aria-label="Coffee slideshow">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1591745742384-ee81ec590924?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw0fHxBJTIwc3RlYW1pbmclMjBjdXAlMjBvZiUyMGNvZmZlZSUyMGluJTIwYSUyMGNvenklMjBjYWZlfGVufDB8MHx8fDE3NTY3NDM1OTF8MA&ixlib=rb-4.1.0&q=80&w=1080" alt="Steaming cup of coffee" class="w-full h-48 object-cover rounded-xl" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://images.pexels.com/photos/11896535/pexels-photo-11896535.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="Latte art" class="w-full h-48 object-cover rounded-xl" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://images.unsplash.com/photo-1756140017272-7ea9a443a70e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3ODkyNDZ8MHwxfHNlYXJjaHw0fHxFeHRlcmlvciUyMG9mJTIwYSUyMHdhcm0lMjBjYWZlJTIwd2l0aCUyMHdvb2RlbiUyMGZ1cm5pdHVyZXxlbnwwfDB8fHwxNzU2NzQzNTk0fDA&ixlib=rb-4.1.0&q=80&w=1080" alt="Cafe exterior" class="w-full h-48 object-cover rounded-xl" />
+              </div>
+            </div>
+            <div class="swiper-pagination mt-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Swiper initialization -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var swiper = new Swiper('.swiper-container', {
+        loop: true,
+        autoplay: { delay: 3000 },
+        pagination: { el: '.swiper-pagination', clickable: true }
+      });
+    });
+  </script>
+
+  <!-- Quotes / Testimonials -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-semibold mb-6" style="font-family: 'Playfair Display', serif;">What guests say</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <blockquote class="p-6 bg-white/70 rounded-xl shadow-md reveal">“The happiest coffee spot in Hyderabad—rich flavors and a welcoming vibe.”</blockquote>
+        <blockquote class="p-6 bg-white/70 rounded-xl shadow-md reveal">“Perfectly balanced lattes and a calm, friendly space.”</blockquote>
+        <blockquote class="p-6 bg-white/70 rounded-xl shadow-md reveal">“Coffee here feels thoughtfully crafted, like a hug in a mug.”</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white/80 text-center py-6 mt-12">
+    <p class="text-sm text-coffee-700">&copy; 2025 Niyantri Cafe, Hyderabad, India</p>
+  </footer>
+
+  <!-- Global scripts -->
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-toggle')?.addEventListener('click', () => {
+      const menu = document.getElementById('mobile-menu');
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+      } else {
+        menu.classList.add('hidden');
+      }
+    });
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => observer.observe(el));
+  </script>
+
+  <!-- Cart utility script (shared across pages) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartCount();
+      // For the home page, the cart count is shown in the header; for mobile too
+      const cartCountMobile = document.getElementById('cart-count-mobile');
+      if (cartCountMobile) cartCountMobile.textContent = document.getElementById('cart-count')?.textContent || '0';
+      // Initialize cart page render if on cart.html (won't render here)
+    });
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem('shoppingCart')) || [];
+    }
+    function saveCart(cart) {
+      localStorage.setItem('shoppingCart', JSON.stringify(cart));
+      updateCartCount();
+    }
+    function addToCart(itemId, itemName, itemPrice) {
+      const cart = getCart();
+      const existing = cart.find(it => it.id === itemId);
+      if (existing) existing.quantity++;
+      else cart.push({ id: itemId, name: itemName, price: itemPrice, quantity: 1 });
+      saveCart(cart);
+      alert(itemName + ' has been added to your cart.');
+    }
+    function removeFromCart(itemId) {
+      let cart = getCart();
+      cart = cart.filter(it => it.id !== itemId);
+      saveCart(cart);
+      // Refresh cart page if present
+      if (document.getElementById('cart-items-container')) renderCartPage();
+    }
+    function updateCartCount() {
+      const cart = getCart();
+      const totalItems = cart.reduce((sum, it) => sum + it.quantity, 0);
+      const headerCount = document.getElementById('cart-count');
+      const mobileCount = document.getElementById('cart-count-mobile');
+      if (headerCount) headerCount.textContent = totalItems;
+      if (mobileCount) mobileCount.textContent = totalItems;
+    }
+    function renderCartPage() {
+      const cart = getCart();
+      const container = document.getElementById('cart-items-container');
+      const totalElement = document.getElementById('cart-total');
+      if (!container || !totalElement) return;
+      container.innerHTML = '';
+      if (cart.length === 0) {
+        container.innerHTML = '<p>Your cart is empty.</p>';
+        totalElement.textContent = '0.00';
+        return;
+      }
+      let total = 0;
+      cart.forEach(item => {
+        const row = document.createElement('div');
+        row.className = 'flex justify-between items-center border-b py-2';
+        row.innerHTML = `
+          <span>${item.name} (x${item.quantity})</span>
+          <div>
+            <span>$${(item.price * item.quantity).toFixed(2)}</span>
+            <button onclick="removeFromCart('${item.id}')" class="ml-4 text-red-600 hover:text-red-900">Remove</button>
+          </div>
+        `;
+        container.appendChild(row);
+        total += item.price * item.quantity;
+      });
+      totalElement.textContent = total.toFixed(2);
+    }
+    function proceedToCheckout() {
+      const cart = getCart();
+      if (cart.length > 0) {
+        window.location.href = './checkout.html';
+      } else {
+        alert('Your cart is empty.');
+      }
+    }
+  </script>
+</body>
+</html>
